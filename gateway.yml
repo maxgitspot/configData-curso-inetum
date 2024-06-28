@@ -12,6 +12,8 @@ spring:
     name: gateway
   cloud:
     gateway:
+      default-filters:
+        - LogFilter
       routes:
       - id: api-student
         uri: lb://api-student
