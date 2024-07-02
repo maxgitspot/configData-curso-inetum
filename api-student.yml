@@ -8,6 +8,12 @@ spring:
     hibernate.ddl-auto: create
     generate-ddl: true
     show-sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/springbootkeycloak
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 
 info:
   application:
@@ -31,3 +37,15 @@ management:
   endpoint:
     health:
       show-details: always
+
+jwt:
+  auth:
+    converter:
+      resource-id: spring-boot
+      principal-attribute: preferred_username
+          
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
